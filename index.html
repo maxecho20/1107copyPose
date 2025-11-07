@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Pose Shifter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #faeee7;
+        color: #594a4e;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        color: #33272a;
+      }
+      button, a {
+        transition: all 250ms ease-out;
+      }
+
+      /* For Webkit-based browsers (Chrome, Safari) */
+      .scrollbar-thin::-webkit-scrollbar {
+          height: 6px;
+          width: 6px;
+      }
+      .scrollbar-track-gray-800::-webkit-scrollbar-track {
+          background-color: #faeee7;
+          border-radius: 10px;
+      }
+      .scrollbar-thumb-gray-600::-webkit-scrollbar-thumb {
+          background-color: #ffc6c7;
+          border-radius: 10px;
+      }
+      .scrollbar-thumb-gray-600:hover::-webkit-scrollbar-thumb {
+          background-color: #ff8ba7;
+      }
+
+      /* For Firefox */
+      .scrollbar-thin {
+          scrollbar-width: thin;
+          scrollbar-color: #ffc6c7 #faeee7; /* thumb and track color */
+      }
+
+      /* Testimonial scroll animation */
+      @keyframes scroll-up {
+        from {
+          transform: translateY(0);
+        }
+        to {
+          transform: translateY(-50%);
+        }
+      }
+      .animate-scroll-up {
+        animation: scroll-up 40s linear infinite;
+      }
+      .testimonial-container:hover .animate-scroll-up {
+        animation-play-state: paused;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.27.0",
+    "react-dom": "https://aistudiocdn.com/react-dom@^19.2.0",
+    "firebase/": "https://aistudiocdn.com/firebase@^12.5.0/"
+  }
+}
+</script>
+</head>
+  <body class="bg-[#faeee7]">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
