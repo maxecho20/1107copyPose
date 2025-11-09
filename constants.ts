@@ -12,18 +12,17 @@ export const POSE_CATEGORIES = ['New', 'Hot', 'Fun', 'Leisure', 'Functional Pose
 
 export const POSE_TEMPLATES: PoseTemplate[] = [
   { url: `https://storage.googleapis.com/pose-shift-app-assets/New/F%20(1).jpg`, name: 'New Pose 1', category: 'New' },
-  { url: `https://storage.googleapis.com/pose-shift-app-assets/New/F%20(10).jpg`, name: 'New Pose 2', category: 'New' },
-  { url: `https://storage.googleapis.com/pose-shift-app-assets/New/F%20(11).jpg`, name: 'New Pose 3', category: 'New' },
+
+
   { url: `https://storage.googleapis.com/pose-shift-app-assets/New/F%20(12).jpg`, name: 'New Pose 4', category: 'New' },
   { url: `https://storage.googleapis.com/pose-shift-app-assets/New/F%20(13).jpg`, name: 'New Pose 5', category: 'New' },
   { url: `https://storage.googleapis.com/pose-shift-app-assets/New/F%20(14).jpg`, name: 'New Pose 6', category: 'New' },
-  { url: `https://storage.googleapis.com/pose-shift-app-assets/New/F%20(16).jpg`, name: 'New Pose 7', category: 'New' },
+
   { url: `https://storage.googleapis.com/pose-shift-app-assets/New/F%20(17).jpg`, name: 'New Pose 8', category: 'New' },
-  { url: `https://storage.googleapis.com/pose-shift-app-assets/New/F%20(2).jpg`, name: 'New Pose 9', category: 'New' },
-  { url: `https://storage.googleapis.com/pose-shift-app-assets/New/F%20(3).jpg`, name: 'New Pose 10', category: 'New' },
+
   { url: `https://storage.googleapis.com/pose-shift-app-assets/New/F%20(4).jpg`, name: 'New Pose 11', category: 'New' },
   { url: `https://storage.googleapis.com/pose-shift-app-assets/New/F%20(6).jpg`, name: 'New Pose 13', category: 'New' },
-  { url: `https://storage.googleapis.com/pose-shift-app-assets/New/F%20(7).jpg`, name: 'New Pose 14', category: 'New' },
+
   { url: `https://storage.googleapis.com/pose-shift-app-assets/New/F%20(8).jpg`, name: 'New Pose 15', category: 'New' },
 
   { url: `https://storage.googleapis.com/pose-shift-app-assets/Leisure/E%20(1).jpg`, name: 'Leisure Pose 1', category: 'Leisure' },

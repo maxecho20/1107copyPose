@@ -113,8 +113,9 @@ export const ShareIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 );
 
 export const RedoIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M2.985 19.644a9 9 0 1 0 13.921-13.921M17.015 4.356V9h-4.659" />
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M23 4v6h-6"></path>
+      <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
     </svg>
 );
 
