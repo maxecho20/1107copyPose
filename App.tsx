@@ -35,9 +35,6 @@ const translations = {
     'nav.faq': 'FAQ',
     'auth.login': 'Log in',
     'auth.signup': 'Sign Up',
-    'hero.title.part1': 'Recreate ',
-    'hero.title.part2.highlight': 'Any Pose',
-    'hero.subtitle': 'Upload your photo, pick a pose, and let our AI magically transfer the pose while keeping you, your clothes, and your background the same.',
   },
   zh: {
     'language.short': '中',
@@ -50,9 +47,6 @@ const translations = {
     'nav.faq': '常见问题',
     'auth.login': '登录',
     'auth.signup': '注册',
-    'hero.title.part1': '重现',
-    'hero.title.part2.highlight': '任何姿势',
-    'hero.subtitle': '上传您的照片，选择一个姿势，让我们的AI神奇地转换姿势，同时保持您、您的衣服和背景不变。',
   }
 };
 
@@ -353,12 +347,22 @@ const App: React.FC = () => {
      return (
         <div className="pt-24 md:pt-32">
             <main className="container mx-auto px-4 py-8">
-                <div className="text-center mb-12">
-                    <h1 className="text-4xl md:text-6xl font-black text-[#33272a] mb-4 leading-tight">
-                        {t('hero.title.part1')}<span className="text-[#ff8ba7]">{t('hero.title.part2.highlight')}</span>
+                <div className="text-center py-12 mb-12">
+                    <h1 className="font-black text-[#33272a] tracking-tighter">
+                        <span className="block text-6xl sm:text-7xl">
+                            <span>Don't let a </span>
+                            <span className="distressed-font">bad pose</span>
+                            <span> ruin a</span>
+                        </span>
+                        <span className="block text-6xl sm:text-7xl mt-2 text-[#ff8ba7]">
+                            beautiful moment
+                        </span>
                     </h1>
-                    <p className="text-lg text-[#594a4e] max-w-3xl mx-auto">
-                        {t('hero.subtitle')}
+                    <h2 className="text-lg sm:text-xl font-bold text-[#33272a] mt-10">
+                        All to showcase your best look
+                    </h2>
+                    <p className="text-base sm:text-lg text-[#594a4e] max-w-2xl mx-auto mt-2 leading-[1.7]">
+                        Rescue your favorite photos. Traveled miles just for an awkward shot? Instantly fix stiff, unnatural, or closed-eye poses.
                     </p>
                 </div>
                 
@@ -382,11 +386,11 @@ const App: React.FC = () => {
                                 <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 hover:opacity-100 transition-opacity rounded-2xl">
                                     <button onClick={() => navigate('templates')} className="bg-white/50 backdrop-blur-sm px-4 py-2 rounded-2xl text-sm font-semibold hover:bg-white/70 hover:scale-105">Replace</button>
                                 </div>
-                                <span className="absolute top-3 left-3 bg-black/30 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm">1. Select a Pose</span>
+                                <span className="absolute top-3 left-3 bg-black/30 text-white text-sm font-bold px-3 py-1 rounded-full backdrop-blur-sm">1. Select a Pose</span>
 
                                 <div 
                                     onClick={() => userImageInputRef.current?.click()}
-                                    className="group absolute bottom-6 left-6 w-52 h-72 bg-white border border-[#ffc6c7] rounded-2xl p-3 cursor-pointer hover:scale-105 transition-transform duration-300 shadow-[0_8px_24px_rgba(89,74,78,0.08)] origin-top-left -rotate-6"
+                                    className="group absolute bottom-6 left-6 w-52 h-72 bg-white border border-[#ffc6c7] rounded-2xl p-3 cursor-pointer hover:scale-105 transition-transform duration-300 shadow-[0_8px_24px_rgba(89,74,78,0.08)] origin-top-left -rotate-6 scale-90"
                                 >
                                     <input type="file" ref={userImageInputRef} onChange={handleUserImageFileChange} accept="image/*" className="hidden" />
                                     {userImage ? (
@@ -400,7 +404,7 @@ const App: React.FC = () => {
                                     <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl">
                                         <button className="bg-white/50 backdrop-blur-sm px-4 py-2 rounded-2xl text-sm font-semibold hover:bg-white/70 hover:scale-105">Replace</button>
                                     </div>
-                                    <span className="absolute top-2 left-2 bg-black/30 text-white text-[10px] font-bold px-2 py-0.5 rounded-full backdrop-blur-sm">2.Upload Your Photo</span>
+                                    <span className="absolute top-2 left-2 bg-black/30 text-white text-sm font-bold px-3 py-1 rounded-full backdrop-blur-sm">2. Upload Your Photo</span>
                                 </div>
                             </div>
                         </div>

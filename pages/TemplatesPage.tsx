@@ -24,6 +24,7 @@ const PoseUploader: React.FC<{ onUpload: (base64: string) => void }> = ({ onUplo
         <div
           className="group relative w-full aspect-[9/14] cursor-pointer rounded-2xl overflow-hidden bg-white/50 border-2 border-dashed border-[#ffc6c7] flex flex-col items-center justify-center text-[#594a4e] hover:border-[#ff8ba7] hover:text-[#ff8ba7] transition-colors"
           style={{ breakInside: 'avoid', marginBottom: '1rem' }}
+          onClick={onAreaClick}
         >
           <input
             type="file"
@@ -33,7 +34,10 @@ const PoseUploader: React.FC<{ onUpload: (base64: string) => void }> = ({ onUplo
             className="hidden"
           />
           <PlusIcon className="h-10 w-10 mb-2 transition-transform group-hover:scale-110" />
-          <span className="text-sm font-semibold text-center">Upload Pose</span>
+          <div className="text-center leading-[1.4] text-sm font-semibold">
+            <p>Upload Your Favorite Pose</p>
+            <p>Reference Images</p>
+          </div>
         </div>
     );
 };

@@ -43,7 +43,6 @@ export const POSE_TEMPLATES: PoseTemplate[] = [
   { url: `https://images.pexels.com/photos/1535162/pexels-photo-1535162.jpeg${pexelsParams}`, name: 'Jumping', category: 'Fun' },
 
   { url: `https://images.pexels.com/photos/3822583/pexels-photo-3822583.jpeg${pexelsParams}`, name: 'Yoga Wheel Pose', category: 'Yoga' },
-
   
   // Artistic Photos
    { url: `https://storage.googleapis.com/pose-shift-app-assets/Artistic-photos/G0%20(1).jpg`, name: 'Artistic Pose 1', category: 'Artistic Photos' },
@@ -60,6 +59,7 @@ export const POSE_TEMPLATES: PoseTemplate[] = [
   { url: `https://storage.googleapis.com/pose-shift-app-assets/Artistic-photos/G0%20(8).jpg`, name: 'Artistic Pose 12', category: 'Artistic Photos' },
   { url: `https://storage.googleapis.com/pose-shift-app-assets/Artistic-photos/G0%20(9).jpg`, name: 'Artistic Pose 13', category: 'Artistic Photos' },
   
+  { url: `https://images.pexels.com/photos/4101143/pexels-photo-4101143.jpeg${pexelsParams}`, name: 'Sitting/Thinking', category: 'Functional Poses' },
   
   // Sports Poses
   
@@ -81,3 +81,7 @@ export const POSE_TEMPLATES: PoseTemplate[] = [
   { url: `https://images.pexels.com/photos/5212320/pexels-photo-5212320.jpeg${pexelsParams}`, name: 'Pointing', category: 'Functional Poses' },
   { url: `https://images.pexels.com/photos/5952136/pexels-photo-5952136.jpeg${pexelsParams}`, name: 'Superhero pose', category: 'Theme Collection' },
   { url: `https://images.pexels.com/photos/1556706/pexels-photo-1556706.jpeg${pexelsParams}`, name: 'Walking', category: 'Outdoor Photos' },
+  { url: `https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg${pexelsParams}`, name: 'Leaning', category: 'Functional Poses' },
+  { url: `https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg${pexelsParams}`, name: 'Waving', category: 'Functional Poses' },
+  { url: `https://images.pexels.com/photos/2033343/pexels-photo-2033343.jpeg${pexelsParams}`, name: 'Crouching', category: 'Functional Poses' },
+];
