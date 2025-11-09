@@ -18,10 +18,46 @@ import { Faq } from './components/Faq';
 import { ContactModal } from './components/ContactModal';
 import { LegalPage, LegalPageType } from './pages/legal/LegalPage';
 import { TemplatesPage } from './pages/TemplatesPage';
-import { PricingPage } from './pages/PricingPage';
+import { PricingSection } from './components/PricingSection';
 import { FeaturedPoses } from './components/FeaturedPoses';
 
-export type Page = 'home' | 'blog' | 'templates' | 'pricing' | LegalPageType;
+export type Page = 'home' | 'blog' | 'templates' | LegalPageType;
+
+const translations = {
+  en: {
+    'language.short': 'EN',
+    'language.english': 'English',
+    'language.chinese': '中文',
+    'nav.home': 'Home',
+    'nav.poseTemplate': 'Pose Template',
+    'nav.pricing': 'Pricing',
+    'nav.blog': 'Blog',
+    'nav.faq': 'FAQ',
+    'auth.login': 'Log in',
+    'auth.signup': 'Sign Up',
+    'hero.title.part1': 'Recreate ',
+    'hero.title.part2.highlight': 'Any Pose',
+    'hero.subtitle': 'Upload your photo, pick a pose, and let our AI magically transfer the pose while keeping you, your clothes, and your background the same.',
+  },
+  zh: {
+    'language.short': '中',
+    'language.english': 'English',
+    'language.chinese': '中文',
+    'nav.home': '首页',
+    'nav.poseTemplate': '姿势模板',
+    'nav.pricing': '定价',
+    'nav.blog': '博客',
+    'nav.faq': '常见问题',
+    'auth.login': '登录',
+    'auth.signup': '注册',
+    'hero.title.part1': '重现',
+    'hero.title.part2.highlight': '任何姿势',
+    'hero.subtitle': '上传您的照片，选择一个姿势，让我们的AI神奇地转换姿势，同时保持您、您的衣服和背景不变。',
+  }
+};
+
+type Language = 'en' | 'zh';
+type TranslationKey = keyof typeof translations.en;
 
 const UserMenu: React.FC<{ onMenuClick: (tab: AccountTab) => void }> = ({ onMenuClick }) => {
     const { userProfile, logout } = useAuth();
@@ -76,13 +112,17 @@ const UserMenu: React.FC<{ onMenuClick: (tab: AccountTab) => void }> = ({ onMenu
     );
 };
 
-const LanguageSwitcher: React.FC = () => {
+const LanguageSwitcher: React.FC<{
+    language: Language;
+    setLanguage: (lang: Language) => void;
+    t: (key: TranslationKey) => string;
+}> = ({ language, setLanguage, t }) => {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <div className="relative">
             <button onClick={() => setIsOpen(!isOpen)} className="flex items-center gap-2 text-[#594a4e] hover:text-[#33272a] transition-colors">
                 <LanguageIcon className="h-5 w-5" />
-                <span className="text-sm font-medium hidden md:inline">EN</span>
+                <span className="text-sm font-medium hidden md:inline">{t('language.short')}</span>
             </button>
              {isOpen && (
                 <div 
@@ -90,8 +130,8 @@ const LanguageSwitcher: React.FC = () => {
                     onMouseLeave={() => setIsOpen(false)}
                 >
                     <div className="py-1">
-                        <a href="#" className="block px-4 py-2 text-sm text-[#33272a] bg-[#ff8ba7]/50 rounded-lg">English</a>
-                        <a href="#" className="block px-4 py-2 text-sm text-[#594a4e] hover:bg-[#ff8ba7]/20 rounded-lg">中文</a>
+                        <a href="#" onClick={(e) => { e.preventDefault(); setLanguage('en'); setIsOpen(false); }} className={`block text-center px-4 py-2 text-sm rounded-lg ${language === 'en' ? 'text-[#33272a] bg-[#ff8ba7]/50' : 'text-[#594a4e] hover:bg-[#ff8ba7]/20'}`}>{t('language.english')}</a>
+                        <a href="#" onClick={(e) => { e.preventDefault(); setLanguage('zh'); setIsOpen(false); }} className={`block text-center px-4 py-2 text-sm rounded-lg ${language === 'zh' ? 'text-[#33272a] bg-[#ff8ba7]/50' : 'text-[#594a4e] hover:bg-[#ff8ba7]/20'}`}>{t('language.chinese')}</a>
                     </div>
                 </div>
              )}
@@ -104,7 +144,10 @@ const Header: React.FC<{
     onSignUpClick: () => void; 
     onMenuClick: (tab: AccountTab) => void;
     navigate: (page: Page, anchorId?: string) => void;
-}> = ({ onLoginClick, onSignUpClick, onMenuClick, navigate }) => {
+    language: Language;
+    setLanguage: (lang: Language) => void;
+    t: (key: TranslationKey) => string;
+}> = ({ onLoginClick, onSignUpClick, onMenuClick, navigate, language, setLanguage, t }) => {
     const { userProfile } = useAuth();
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -137,21 +180,21 @@ const Header: React.FC<{
                     <span className="text-2xl font-bold text-[#33272a]">PoseShift</span>
                 </div>
                 <nav className="hidden md:flex items-center space-x-8 text-[#594a4e] font-semibold">
-                    <a href="#" onClick={(e) => handleLinkClick(e, 'home')} className="hover:text-[#33272a] transition-colors">Home</a>
-                    <a href="#" onClick={(e) => handleLinkClick(e, 'templates')} className="hover:text-[#33272a] transition-colors">Pose Template</a>
-                    <a href="#" onClick={(e) => handleLinkClick(e, 'pricing')} className="hover:text-[#33272a] transition-colors">Pricing</a>
-                    <a href="#" onClick={(e) => handleLinkClick(e, 'blog')} className="hover:text-[#33272a] transition-colors">Blog</a>
-                    <a href="/#faq" onClick={(e) => handleLinkClick(e, 'home', 'faq')} className="hover:text-[#33272a] transition-colors">FAQ</a>
+                    <a href="#" onClick={(e) => handleLinkClick(e, 'home')} className="hover:text-[#33272a] transition-colors">{t('nav.home')}</a>
+                    <a href="#" onClick={(e) => handleLinkClick(e, 'templates')} className="hover:text-[#33272a] transition-colors">{t('nav.poseTemplate')}</a>
+                    <a href="/#pricing-section" onClick={(e) => handleLinkClick(e, 'home', 'pricing-section')} className="hover:text-[#33272a] transition-colors">{t('nav.pricing')}</a>
+                    <a href="#" onClick={(e) => handleLinkClick(e, 'blog')} className="hover:text-[#33272a] transition-colors">{t('nav.blog')}</a>
+                    <a href="/#faq" onClick={(e) => handleLinkClick(e, 'home', 'faq')} className="hover:text-[#33272a] transition-colors">{t('nav.faq')}</a>
                 </nav>
                 <div className="flex items-center space-x-4">
-                     <LanguageSwitcher />
+                     <LanguageSwitcher language={language} setLanguage={setLanguage} t={t} />
                     {userProfile ? (
                         <UserMenu onMenuClick={onMenuClick} />
                     ) : (
                         <>
-                            <button onClick={onLoginClick} className="text-[#594a4e] hover:text-[#33272a] transition-colors text-sm font-medium hidden sm:block">Log in</button>
+                            <button onClick={onLoginClick} className="text-[#594a4e] hover:text-[#33272a] transition-colors text-sm font-medium hidden sm:block">{t('auth.login')}</button>
                             <button onClick={onSignUpClick} className="px-5 py-2 text-sm font-semibold bg-[#ff8ba7] text-[#33272a] rounded-2xl hover:brightness-105 transition-all">
-                                Sign Up
+                                {t('auth.signup')}
                             </button>
                         </>
                     )}
@@ -177,6 +220,11 @@ const App: React.FC = () => {
   const [initialAccountTab, setInitialAccountTab] = useState<AccountTab>('creations');
   const [page, setPage] = useState<Page>('home');
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  const [language, setLanguage] = useState<Language>('en');
+  const t = (key: TranslationKey): string => {
+    return translations[language][key] || translations['en'][key];
+  };
   
   const { userProfile } = useAuth();
   const generationCost = 3;
@@ -306,9 +354,11 @@ const App: React.FC = () => {
         <div className="pt-24 md:pt-32">
             <main className="container mx-auto px-4 py-8">
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl md:text-6xl font-black text-[#33272a] mb-4 leading-tight">Recreate <span className="text-[#ff8ba7]">Any Pose</span></h1>
+                    <h1 className="text-4xl md:text-6xl font-black text-[#33272a] mb-4 leading-tight">
+                        {t('hero.title.part1')}<span className="text-[#ff8ba7]">{t('hero.title.part2.highlight')}</span>
+                    </h1>
                     <p className="text-lg text-[#594a4e] max-w-3xl mx-auto">
-                        Upload your photo, pick a pose, and let our AI magically transfer the pose while keeping you, your clothes, and your background the same.
+                        {t('hero.subtitle')}
                     </p>
                 </div>
                 
@@ -396,6 +446,7 @@ const App: React.FC = () => {
                 </div>
 
                 <Testimonials />
+                <PricingSection onGetStarted={handleOpenSignUpModal} />
                 <Faq onContactClick={() => setIsContactModalOpen(true)} />
             </main>
             <Footer onContactClick={() => setIsContactModalOpen(true)} navigate={navigate} />
@@ -409,8 +460,6 @@ const App: React.FC = () => {
         return renderHomePage();
       case 'templates':
         return <TemplatesPage onSelectPose={handleSelectPose} onContactClick={() => setIsContactModalOpen(true)} navigate={navigate} />;
-      case 'pricing':
-        return <PricingPage onGetStarted={handleOpenSignUpModal} />;
       case 'blog':
         return <BlogPage onContactClick={() => setIsContactModalOpen(true)} navigate={navigate} />;
       case 'terms':
@@ -440,6 +489,9 @@ const App: React.FC = () => {
                 onSignUpClick={handleOpenSignUpModal} 
                 onMenuClick={handleMenuClick}
                 navigate={navigate}
+                language={language}
+                setLanguage={setLanguage}
+                t={t}
             />
             
             {renderContent()}

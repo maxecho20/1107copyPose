@@ -57,8 +57,8 @@ export const Footer: React.FC<{
 
     const productLinks: FooterLink[] = [
         { name: 'Features', page: 'home' },
-        { name: 'Pricing', anchor: 'pricing' },
-        { name: 'FAQ', anchor: 'faq' },
+        { name: 'Pricing', page: 'home', anchor: 'pricing-section' },
+        { name: 'FAQ', page: 'home', anchor: 'faq' },
     ];
 
     const resourceLinks: FooterLink[] = [
